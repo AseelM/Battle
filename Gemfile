@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'capybara'
 gem 'codeclimate'
@@ -7,4 +7,5 @@ gem 'rspec'
 gem 'rubocop'
 gem 'selenium-webdriver'
 gem 'shotgun'
+gem 'simplecov', require: false, group: :test
 gem 'sinatra'

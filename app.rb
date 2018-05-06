@@ -1,4 +1,5 @@
 require_relative 'lib/player'
+require_relative 'lib/game'
 require 'sinatra/base'
 
 class Battle < Sinatra::Base
@@ -9,21 +10,20 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    $player_1 = Player.new(params[:player1])
-    $player_2 = Player.new(params[:player2])
+    player_1 = Player.new(params[:player1])
+    player_2 = Player.new(params[:player2])
+    $game = Game.new(player_1, player_2)
     redirect to('/play')
   end
 
   get '/play' do
-    @player_1 = $player_1
-    @player_2 = $player_2
+    @game = $game
     erb :play
   end
 
   get '/attack' do
-    @player_1 = $player_1
-    @player_2 = $player_2
-    @player_1.attack(@player_2)
+    @game = $game
+    @game.attack(@game.player_2)
     erb :attack
   end
 

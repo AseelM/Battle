@@ -1,12 +1,13 @@
 <div>
-  <p>Powerful attack <%= @game.current.name %>!</p>
+  <p>Powerful attack <%= @game.current_player.name %>!</p>
   <p><%=@game.player_1.name %> hit points: <%= @game.player_1.hit_points %>HP</p>
   <p><%=@game.player_2.name %> hit points: <%= @game.player_2.hit_points %>HP</p>
 </div>
+
 <% if @game.player_2.hit_points == 0 %>
-<p><%= @game.player_2.name %> lost the game!</p>
+  <p><%= @game.player_2.name %> lost the game!</p>
 <% else %>
-<form action='/play'>
-  <input type='submit' value='Switch!'>
-</form>
+  <form action='/play'>
+    <input type='submit' value='Switch!'>
+  </form>
 <% end %>

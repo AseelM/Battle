@@ -36,7 +36,7 @@ describe Game do
       player_2 = double(:player)
       game = Game.new(player_1, player_2)
       game.switch
-      expect(game.current).to eq(player_1)
+      expect(game.current_player).to eq(player_1)
     end
 
     it 'switches to player2 after player1 finishes turn' do
@@ -44,26 +44,26 @@ describe Game do
       player_2 = double(:player)
       game = Game.new(player_1, player_2)
       2.times{ game.switch }
-      expect(game.current).to eq(player_2)
+      expect(game.current_player).to eq(player_2)
+    end
+  end
+
+  describe '#turn' do
+    it 'switches turn to player2' do
+      player_1 = double(:player)
+      player_2 = double(:player)
+      game = Game.new(player_1, player_2)
+      game.turn
+      expect(game.current_player).to eq(player_2)
     end
 
-    describe '#turn' do
-      it 'switches turn to player2' do
-        player_1 = double(:player)
-        player_2 = double(:player)
-        game = Game.new(player_1, player_2)
-        game.turn
-        expect(game.current).to eq(player_2)
-      end
-
-      it 'switches turn to player2' do
-        player_1 = double(:player)
-        player_2 = double(:player)
-        game = Game.new(player_1, player_2)
-        game.switch
-        game.turn
-        expect(game.current).to eq(player_1)
-      end
+    it 'switches turn to player2' do
+      player_1 = double(:player)
+      player_2 = double(:player)
+      game = Game.new(player_1, player_2)
+      game.switch
+      game.turn
+      expect(game.current_player).to eq(player_1)
     end
   end
 

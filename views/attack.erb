@@ -1,4 +1,8 @@
 <div>
-  <p>Powerful attack <%= @game.player_1.name %>!</p>
+  <p>Powerful attack <%= @game.current.name %>!</p>
+  <p><%=@game.player_1.name %> hit points: <%= @game.player_1.hit_points %>HP</p>
   <p><%=@game.player_2.name %> hit points: <%= @game.player_2.hit_points %>HP</p>
 </div>
+<form action='/play'>
+  <input type='submit' value='Switch!'>
+</form>

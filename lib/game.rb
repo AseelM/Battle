@@ -20,4 +20,12 @@ class Game
     @current_player == @player_1 ? @player_2 : @player_1
   end
 
+  def self.instance
+    @game
+  end
+
+  def self.create(player_1, player_2)
+    @game = Game.new(player_1, player_2)
+  end
+
 end
